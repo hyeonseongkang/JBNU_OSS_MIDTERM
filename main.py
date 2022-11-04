@@ -44,8 +44,17 @@ while True:
         # 나누기
         elif choice == '4':
             value = calculator.divide(num1, num2)
-            log_str = '%0.1f / %0.1f = %0.1f' % (num1, num2, value)
-            success_logger.debug(log_str)
+
+            # 나누기 에러
+            if value == False:
+                log_str = "Div By Zero: 0으로 나눌 수 없습니다."
+                fail_logger.error(log_str)
+
+            else:
+                log_str = '%0.1f / %0.1f = %0.1f' % (num1, num2, value)
+                success_logger.debug(log_str)
+            
+            print(log_str)
 
         # check if user wants another calculation
         # break the while loop if answer is no
