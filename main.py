@@ -20,8 +20,15 @@ while True:
 
     # check if choice is one of the four options
     if choice in ('1', '2', '3', '4'):
-        num1 = float(input("Enter first number: "))
-        num2 = float(input("Enter second number: "))
+        
+        try :
+            num1 = float(input("Enter first number: "))
+            num2 = float(input("Enter second number: "))
+        except:
+            log_str = "Invalid Input: 숫자만 입력 가능합니다."
+            fail_logger.error(log_str)
+            print(log_str)
+            continue
 
         # 더하기
         if choice == '1':
@@ -104,4 +111,6 @@ while True:
             break
 
     else:
-        print("Invalid Input")
+        log_str = "Invalid Input: 1~4 사이의 값을 입력해 주세요."
+        fail_logger.error(log_str)
+        print(log_str)
