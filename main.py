@@ -20,7 +20,8 @@ while True:
 
     # check if choice is one of the four options
     if choice in ('1', '2', '3', '4'):
-        
+
+        # 숫자 외의 입력은 에러
         try :
             num1 = float(input("Enter first number: "))
             num2 = float(input("Enter second number: "))
