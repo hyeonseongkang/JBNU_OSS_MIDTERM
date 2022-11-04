@@ -49,8 +49,49 @@ while True:
 
         # check if user wants another calculation
         # break the while loop if answer is no
-        next_calculation = input("Let's do next calculation? (yes/no): ")
-        if next_calculation == "no":
+
+        out_while_condi = True
+        break_val = False
+
+        # 프로그램 종료 루틴에서, yes/no 이외의 입력에 대해 재확인 하기 위해 while loop 사용
+        while out_while_condi:
+            
+            # yes/no 입력값에 대해 대소문자 모두 허용하기 위해 입력값을 전부 소문자로 변경
+            next_calculation = input("Let's do next calculation? (yes/no): ").lower()
+            out_while_condi = False
+
+            if next_calculation == "yes":
+                continue
+
+            elif next_calculation == "no":
+                
+                inner_while_condi = True
+ 
+                # 프로그램 종료 전 종료 재확인에서 yes, no 이외의 값이 들어오면 다시 재확인 하기 위해 while loop 사용
+                while inner_while_condi:
+                    again_check = input("Are you sure? (yes/no): ").lower()
+                
+                    inner_while_condi = False
+
+                    if again_check == "yes":
+                        break_val = True
+
+                    elif again_check == "no":
+                        continue
+
+                    else:
+                        log_str = "Invalid Input: yes/no 중 하나의 값을 입력해 주세요."
+                        fail_logger.error(log_str)
+                        print(log_str)
+                        inner_while_condi = True
+            
+            else:           
+                log_str = "Invalid Input: yes/no 중 하나의 값을 입력해 주세요."
+                fail_logger.error(log_str)
+                print(log_str)
+                out_while_condi = True
+
+        if break_val == True:
             break
 
     else:
